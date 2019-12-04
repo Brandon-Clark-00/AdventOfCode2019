@@ -9,6 +9,8 @@
 #include "../Utils.hpp"
 
 
+
+
 using namespace std;
 
 
@@ -85,18 +87,18 @@ int day2()
           }
           else if (temp.at(i) == 99)
           {
-            cout << "Intcode program finished" << endl;
+            
           break;
           }
           else
           {
-            cout << "Unknown opcode encountered" << endl;
+            return 1;
           }  
         }
 
         if (temp.at(0) == 19690720)
         {
-          cout << "Found it bro" << endl;
+          cout << endl << "Found it bro" << endl;
           values = temp;
           break;
           break;
@@ -106,7 +108,6 @@ int day2()
        }
         if (temp.at(0) == 19690720)
         {
-          cout << "Found it again bro" << endl;
           values = temp;
          
           break;
