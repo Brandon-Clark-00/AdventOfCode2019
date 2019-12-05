@@ -81,13 +81,13 @@ using namespace std;
         }
         lineReader.close();
 
-         vector <vector<vector<int>>> active;
+         vector <vector<vector<long>>> active;
         active.resize(2);
 
     
     for (int i = 0; i < 2; i++)
     {
-        vector<int> current;
+        vector<long> current;
         current.push_back(0);
         current.push_back(0);
        
@@ -168,38 +168,37 @@ using namespace std;
     //     }
         
     //     }
-    sleep(20);
+    sleep(10);
 
    
     
     
     
 
-    vector <vector<int>> collisions;
-
-    for (int i = 0; i < int(active.at(0).size()); i++)
+    vector <vector<long>> collisions;
+    int totalSize = int(active.at(0).size());
+    for (int i = 0; i < 40000; i++)
     {
-        try
+        if (i % 1000 == 0)
         {
+            cout << "I = " << i << " of " << totalSize << endl;
+        }
+        
+       
             int wireI1, wireI2;
             
             
                 wireI1 = active.at(0).at(i)[0];
-          
-           
                 wireI2 = active.at(0).at(i)[1];
-        
-            
-            
-            
+    
             for (int j = 0; j < int(active.at(1).size()); j++)
             {
                 int wireJ1, wireJ2;
                 
                  
-                 wireJ1 = active.at(0).at(j)[0];
+                 wireJ1 = active.at(1).at(j)[0];
 
-                 wireJ2 = active.at(0).at(j)[1];
+                 wireJ2 = active.at(1).at(j)[1];
                 
                 
                 
@@ -208,31 +207,60 @@ using namespace std;
                     if(wireI2 == wireJ2)
                     {
                         collisions.push_back(active.at(0)[i]);
-                        cout << " got one at " << wireI1 << ":" << wireI2 << " ||| " << wireJ1 << ":" << wireJ2 << endl;
+                        collisions.at(int(collisions.size()-1))[2] = i+j;
+                        cout << " got one at " << i << "][" << j << "  " << wireI1 << ":" << wireI2 << " ||| " << wireJ1 << ":" << wireJ2 << endl;
                        
                     }
                 }
            
-            } 
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-            exit(0);
-        }
-        
+            }        
     }
 
 
     cout << "Got here" << endl;
-    for (int i = 0; i < int(collisions.size()); i++)
+    long f = collisions.at(1)[0], s = collisions.at(1)[1];
+    if (f<0)
     {
-        cout << i << " = " << collisions.at(i)[0] << ":" << collisions.at(i)[1] << endl;
+        f = f*-1;
+    }
+    if(s < 0)
+    {
+        s = s*-1;
     }
     
+    long shortest = f+s;
+
+    long current;
+
+    for (int i = 2; i < int(collisions.size()); i++)
+    {
+        f = collisions.at(i)[0];
+        s = collisions.at(i)[1];
+        if (f<0)
+            {
+                f = f*-1;
+            }
+        if(s < 0)
+            {
+                s = s*-1;
+            }
+            current = f+s;
+        
+        if (current < shortest)
+        {
+            shortest = current;
+        }
+        
+       
+    }
+
+     for (int i = 0; i < int(collisions.size()); i++)
+    {
+     cout << i << " = " << collisions.at(i)[0] << ":" << collisions.at(i)[1] << " & total wire = " << collisions.at(i)[2] << endl;
+    }
     
 
-       
+       cout << "Closest intersection " << shortest << "." << endl;
 
     return 0;
 
