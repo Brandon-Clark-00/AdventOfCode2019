@@ -17,6 +17,10 @@ using namespace std;
 int recursive(string satellite)
 {
     cout<< "Made it to " << satellite << endl;
+   if (orbmap.find(satellite) == orbmap.end())
+   {
+       cout << "You done fucked up" << endl;
+   }
    
     cout << "This is something: " << orbmap.find(satellite)->second << endl;
     string key =(orbmap.find(satellite)->second);
