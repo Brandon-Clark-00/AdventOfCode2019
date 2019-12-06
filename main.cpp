@@ -5,6 +5,7 @@
 #include "Day_1/Day1.cpp"
 #include "Day_2/Day2.cpp"
 #include "Day_3/Day3.cpp"
+#include "Day_4/Day4.cpp"
 
 using namespace std;
 
@@ -51,16 +52,24 @@ int main()
         case 3:
             cout << "Day 3 selected" << endl; // Compiles "Atest_file.txt" from assembly language into machine code
             if (day3() == 1)
-            {
-                cout << "Error occured with day " << result << endl;
-            }
+                {
+                    cout << "Error occured with day " << result << endl;
+                }
             else
-            {
-                cout << "Code ran successfully" << endl;
-            }
+                {
+                    cout << "Code ran successfully" << endl;
+                }
             break;
         case 4:
             cout << "Day 4 selected" << endl << endl; // Compiles user selected file from assembly language into machine code
+            if (day4() == 1)
+                {
+                    cout << "Error occured with day " << result << endl;
+                }
+            else
+                {
+                    cout << "Code ran successfully" << endl;
+                }
             break;
         case 5:
             cout << "Day 5 selected" << endl << endl; // Runs simulator using user selected file
@@ -140,7 +149,7 @@ int main()
 
 void displayMenu()
 {
-    int numOfDays = 3;
+    int numOfDays = 4;
     cout << endl;
     cout << "\033[4;36mDays\033[0m\n";
     for (int i = 1; i < 26; i++)

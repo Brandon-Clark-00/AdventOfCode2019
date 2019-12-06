@@ -31,7 +31,7 @@ using namespace std;
         sleep(1);
 
         // Reads each line into a vector to then be processed further
-        lineReader.open("Day_3/input.txt");
+        lineReader.open("Day_3/i2.txt");
         if (lineReader.is_open())
         {
             int counter = 0;
@@ -177,7 +177,7 @@ using namespace std;
 
     vector <vector<long>> collisions;
     int totalSize = int(active.at(0).size());
-    for (int i = 0; i < 40000; i++)
+    for (int i = 0; i < int(active.at(0).size()); i++)
     {
         if (i % 1000 == 0)
         {
@@ -229,6 +229,7 @@ using namespace std;
     }
     
     long shortest = f+s;
+    long shortestWire = collisions.at(1)[2];
 
     long current;
 
@@ -250,6 +251,11 @@ using namespace std;
         {
             shortest = current;
         }
+        if (collisions.at(i)[2] < shortestWire)
+        {
+           shortestWire = collisions.at(i)[2];
+        }
+        
         
        
     }
@@ -260,7 +266,8 @@ using namespace std;
     }
     
 
-       cout << "Closest intersection " << shortest << "." << endl;
+       cout << "Closest intersection by distance " << shortest << "." << endl;
+       cout << "Closest intersection by sum of length of wires " << shortestWire << "." << endl;
 
     return 0;
 
