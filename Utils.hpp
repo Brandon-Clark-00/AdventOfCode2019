@@ -52,7 +52,7 @@ int compareFiles(string file, string file2)
     vector<string> uno;
     vector<string> dos;
 
-    
+        bool equal1 = true, equal2 = true;
         ifstream lineReader;
         string line;
 
@@ -103,7 +103,7 @@ int compareFiles(string file, string file2)
         else
         {
             cout << "Files are not equally sized." << endl;
-            return 0;
+            equal1 = false;
         }
         
         for (int i = 0; i < int(uno.size()); i++)
@@ -113,14 +113,19 @@ int compareFiles(string file, string file2)
                 if (uno.at(i)[j] != dos.at(i)[j])
                 {
                    cout << "Files are not the same, first file at pos " << i << ":" << j << "(" <<uno.at(i)[j] << ") not equal to second file at pos "<< i << ":" << j << "(" <<dos.at(i)[j] << ")" << endl;
-                return 0;
+                equal2 = false;
                 }
                 
             }
             
         }
 
-        cout<< "Files are equal" << endl;
+        if (equal1 && equal2)
+        {
+            cout<< "Files are equal" << endl;
+        }
+        
+        
         
 
 

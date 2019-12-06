@@ -6,6 +6,8 @@
 #include "Day_2/Day2.cpp"
 #include "Day_3/Day3.cpp"
 #include "Day_4/Day4.cpp"
+#include "Day_5/Day5.cpp"
+#include "Day_6/Day6.cpp"
 
 using namespace std;
 
@@ -76,6 +78,14 @@ int main()
             break;
         case 6:
             cout << "Day 6 selected" << endl; // Compiles "Atest_file.txt" from assembly language into machine code
+            if (day6() == 1)
+                {
+                    cout << "Error occured with day " << result << endl;
+                }
+            else
+                {
+                    cout << "Code ran successfully" << endl;
+                }
             break;
         case 7:
             cout << "Day 7 selected" << endl << endl; // Compiles user selected file from assembly language into machine code
@@ -133,7 +143,7 @@ int main()
             break;
         case 25:
             cout << "Day 25 selected" << endl; // Exits program
-            compareFiles("Day_2/input.txt","tadDay2.txt");
+            compareFiles("Output.txt","ramsay.txt");
             break;
          case 26:
             cout << "Day 26 selected" << endl; // Exits program
@@ -149,7 +159,7 @@ int main()
 
 void displayMenu()
 {
-    int numOfDays = 4;
+    int numOfDays = 6;
     cout << endl;
     cout << "\033[4;36mDays\033[0m\n";
     for (int i = 1; i < 26; i++)

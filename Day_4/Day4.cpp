@@ -6,18 +6,20 @@
 #include <iostream>
 #include <vector>
 
+#include <fstream>
+
 
 using namespace std;
 
 
   int day4()
     {
-        
+        ofstream fyall;
         vector<string> list;
         string current = "";
         bool containsAdj = false, inOrder = true;
         
-        for (int i = 206938; i < 679129; i++)
+        for (int i = 178416; i < 676462; i++)
         {
             inOrder = true;
             containsAdj = false;
@@ -74,12 +76,14 @@ using namespace std;
         }
 
         int total = 0;
+        fyall.open("Output.txt");
         for (int i = 0; i < int(list.size()); i++)
         {
+           fyall << i << ": " << list.at(i) << endl;
            cout << i << ": " << list.at(i) << endl;
            total++;
         }
-
+        fyall.close();
         cout << "\nTotal is " << total << endl;
         
         
